@@ -1,0 +1,106 @@
+%Plantilla CV%
+
+%Indica un documento de tipo articulo con fuente de 11pt%
+\documentclass[10pt]{article}
+%Indicar la codificación de caracteres en el documento%
+\usepackage[utf8]{inputenc}
+%Util para visualizar como se acomoda el texto en el documento%
+\usepackage{lipsum}
+%Indicar la configuración de pagina deseada o margen%
+%Primer parametro a la izquierda 2cm en este caso%
+%Segundo parametro superior 2 cm en este caso%
+%Tercer parametro inferior 2.5 cm en este caso%
+%Cuarto parametro a la derecha 2cm en este caso%
+\usepackage[left=1cm, top=1cm, bottom=1cm, right=1cm]{geometry}
+%Incluir graficos como imagenes%
+\usepackage{graphicx}
+%Indicar la lista de elementos multimedia por extension que pueden importarse%
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+%Indicar las carpetas donde se van a alojar los elementos graficos como imagenes%
+\graphicspath{{./imgs1/}}
+%Cambiar el formato de la fecha a español%
+\usepackage[spanish]{babel}
+%Agregar una extension del paquete tabular%
+\usepackage{tabularx}
+%Permite insertar una imagen dentro de un contorno como un a circunferencia%
+\usepackage{tikz}
+
+%Inicia Formato para las secciones del CV%
+%Extiende las opciones para formato de columnas y especificacion de formatos%
+\usepackage{array, xcolor}
+%Crear una columna alineando el texto a la izquierda e identacion 0.14%
+\newcolumntype{L}{>{\raggedleft}p{0.14\textwidth}}
+%Crear una columna con identacion 0.8%
+\newcolumntype{R}{p{0.8\textwidth}}
+%Elegir un color para la linea de separacion de las columnas%
+\definecolor{myGray}{HTML}{666666}
+%Indicar el color para la linea de separacion de las columnas%
+\newcommand\VRule{\color{myGray}\vrule width 1pt}
+%Fin Formato para las secciones del CV%
+
+%Inicia CV%
+\title{
+	%Incluir una imagen dentro de una circunferencia%
+	\begin{tikzpicture}
+		%clip indica la posicion x,y y el radio de la circunferencia en cm donde se posicionara la imagen dentro de la circunferencia%
+		\clip (0.825,0) circle (2cm);
+		%node indica la posicion x,y que se tomara de referencia para ocultar lo que este fuera de ella%
+		\node at (0,0) {\includegraphics[width=6cm]{yourImage.png}};
+	\end{tikzpicture}
+%Salta un espacio y escribe el texto en un tamaño predefinido como LARGE%
+\\ \LARGE Nombre1 Nombre2 Apellido1 Apellido2}
+\author{\small \textbf{Correo}: miEmail@AlgunDominio.com \textbf{Teléfono}:+525512345678}
+
+\begin{document}
+	\maketitle
+	%El caracter * se usa para no usar Numeracion en las secciones%
+	\section*{Sobre Usted}
+	%tabular indica que se usara una tabla%
+	%La instruccon L! \VRule R indica que se inserte una linea vertical entre las columnas L y R%
+	\begin{tabular}{L!{\VRule}R}
+		%El comando textbf resalta el texto en negritas%
+		%El comando lipsum[1][1] indica usar texto para 1 parrafo y 1 linea respectivamente%
+		\textbf{Frase Favorita} & \lipsum[1][1]\\
+		\textbf{Intereses} & \lipsum[1][1-3]\\
+		\textbf{Pasatiempos} & \lipsum[1][1-3]
+	\end{tabular}
+	
+	\section*{Educación}
+	\begin{tabular}{L!{\VRule}R}
+		\textbf{AñoA--AñoB} & \lipsum[1][1]\\
+		\textbf{AñoC--AñoD} & \lipsum[1][1]\\
+		\textbf{AñoE--AñoF} & \lipsum[1][1]
+	\end{tabular}
+	
+	\section*{Experiencia}
+	\begin{tabular}{L!{\VRule}R}
+		\textbf{AñoA--AñoB} & \lipsum[1][1]\\
+		\textbf{AñoC--AñoD} & \lipsum[1][1]\\
+		\textbf{AñoE--AñoF} & \lipsum[1][1]
+	\end{tabular}
+	
+	\section*{Idiomas}
+	\begin{tabular}{L!{\VRule}R}
+		\textbf{Español} & Lengua Nativa\\
+		\textbf{Inglés} & Avanzado\\
+		\textbf{Japonés} & Básico
+	\end{tabular}
+
+	\section*{Cursos y Certificaciones}
+	\begin{tabular}{L!{\VRule}R}
+		\textbf{AñoX} & Titulo Curso: \lipsum[1][1]\\
+		\textbf{AñoA--AñoB} & Titulo Curso: \lipsum[1][1]\\
+		\textbf{AñoY} & Titulo Certificación: \lipsum[1][1]\\
+		\textbf{AñoC--AñoD} & Titulo Certificación: \lipsum[1][1]\\
+	\end{tabular}
+
+	\section*{Habilidades}
+	\begin{tabular}{L!{\VRule}R}
+		\textbf{Habilidad1} & \lipsum[1][1]\\
+		\textbf{Habilidad2} & \lipsum[1][1]\\
+		\textbf{Habilidad3} & \lipsum[1][1]\\
+		\textbf{Habilidad4} & \lipsum[1][1]\\
+	\end{tabular}
+		
+\end{document}
+%Termina CV%
