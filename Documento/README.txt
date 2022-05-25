@@ -1,4 +1,4 @@
-El objetivo de esta plantilla es brindar un punto de partida funcional para crear un documento en LaTex y servir de guía para quien aín no ha utilizado
+El objetivo de esta plantilla es brindar un punto de partida funcional para crear un documento en LaTex y servir de guía para quien aún no ha utilizado
 LaTex. Recordando que esta plantilla no reemplaza la consulta de la documentación y otros ejemplos en línea para aprovechar al máximo su potencial.
 
 En la carpeta Documento se encuentran:
