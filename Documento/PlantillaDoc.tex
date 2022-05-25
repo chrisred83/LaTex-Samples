@@ -1,0 +1,289 @@
+%Plantilla descriptiva para crear un documento de texto en LaTex%
+%----Inicio Estructura general del documento----%
+%Indica un documento de tipo articulo con fuente de 12pt%
+\documentclass[12pt]{article}
+%Los siguientes paquetes se utilizan para:%
+%Crear un indice para el documento%
+\usepackage{makeidx}
+%Remover el contorno de los hipervinculos%
+\usepackage[hidelinks]{hyperref}
+%Indicar la codificación de caracteres en el documento%
+\usepackage[utf8]{inputenc}
+%Mejorar la estructura e impresión de documentos que contienen formulas matematicas%
+\usepackage{amsmath}
+%Brindar un conjunto extendido de fuentes (simbolos por ejemplo) para su uso en matematicas%
+\usepackage{amsfonts}
+%Mejorar la calidad de las tablas%
+\usepackage{booktabs}
+%Modificar los margenes y rotar el contenido de una pagina%
+\usepackage{lscape}
+%Permitir la creacion de tablas con multiples filas%
+\usepackage{multirow}
+%Permitir la creacion de tablas con multiples columnas%
+\usepackage{multicol}
+%Permitir la creacion de listas utilizando el comando itemize%
+\usepackage{mdwlist}
+%Agregar soporte para el paquete lscape al usar pdf y permitir su rotacion%
+\usepackage{pdflscape}
+%Simplificar la inclusion de documentos pdf externos%
+\usepackage{pdfpages}
+%Definir comandos nuevos para textos irregulares%
+\usepackage{ragged2e}
+%Agregar subtitulos a subfiguras%
+\usepackage{subcaption}
+%Agregar una extension del paquete tabular%
+\usepackage{tabularx}
+%Soportar texto Times Roman y matematicas coincidentes, esta obsoleto pero se puede reemplazar por%
+%\usepackage{mathptmx}%
+\usepackage{times}
+%Proveer de control sobre la tipografia de la tabla de contenido, Lista de Figuras y Tablas%
+\usepackage{tocloft}
+%Ademas del soporte a ligas, permite saltos de linea en ciertos caracteres o combinaciones de estos%
+\usepackage{url}
+%Permite reimplementar los ambientes verbatim de LaTex%
+\usepackage{verbatim}
+%Util para visualizar como se acomoda el texto en el documento%
+\usepackage{lipsum}
+%----Fin Estructura general del documento----%
+
+%----Inicio Configuración de Secciones----%
+%Reducir el espacio por encima y debajo de los titulos%
+\usepackage[compact]{titlesec}
+%Definir la identación del parrafo despues de un capitulo, seccion, sub-seccion y sub-subseccion%
+%El primer parametro incrementa el valor para el margen de la izquierda en este caso 1pt%
+%El segundo parametro es el espacio vertical antes del titulo en este caso *0%
+%El tercer parametro es el espacio vertical entre el titulo y el texto en este caso *0%
+\titlespacing{\chapter}{1pt}{*0}{*0}
+\titlespacing{\section}{1pt}{*0}{*0}
+\titlespacing{\subsection}{1pt}{*0}{*0}
+\titlespacing{\subsubsection}{1pt}{*0}{*0}
+%Indicar que encima y debajo del documento salte en este caso 1pt de espacio%
+\AtBeginDocument{
+	\setlength\abovedisplayskip{1pt}
+	\setlength\belowdisplayskip{1pt}
+}
+%Indicar la configuración de pagina deseada o margen%
+%Primer parametro a la izquierda 2cm en este caso%
+%Segundo parametro superior 2 cm en este caso%
+%Tercer parametro inferior 2.5 cm en este caso%
+%Cuarto parametro a la derecha 2cm en este caso%
+\usepackage[left=2cm, top=2cm, bottom=2.5cm, right=2cm]{geometry}
+%Incluir graficos como imagenes%
+\usepackage{graphicx}
+%----Fin Configuración de Secciones----%
+
+%Inicia Titulos de Encabezado%
+%Construir encabezados y pies de pagina%
+\usepackage{fancyhdr}
+%Indicar el estilo del encabezado%
+\pagestyle{fancy}
+%Personalizar encabezado y pie de pagina cuando se usan 2 columnas%
+\fancyhead[LE,RO]{\slshape\rightmark}
+\fancyhead[LO,RE]{\slshape\leftmark}
+%\lhead{}%
+%Centrar el texto con respecto a su contenido%
+\fancyfoot[C]{\thepage}
+%Termina titulos de Encabezado%
+
+%Inicio Configuracon de Tabla%
+%Define un tipo de columna P, con un argumento obligatorio [1], centrado y cancelando el backslash%
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+%Fin configuracion de Tabla%
+
+%Inicio Configuraciones Personalizadas%
+%Dar por defecto el nombre Figura a los graficos que se agregan al documento%
+\usepackage[figurename=Figura]{caption}
+%Dar por defecto el nombre Tabla a las tablas que se agregan al documento%
+\usepackage[tablename=Tabla]{caption}
+%Indicar la lista de elementos multimedia por extension que pueden importarse%
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+%Indicar las carpetas donde se van a alojar los elementos graficos como imagenes%
+\graphicspath{{./imgs1/},{./imgs2/}}
+%Cambiar el titulo de las referencias incluidas en el documento%
+\renewcommand{\refname}{Referencias}
+%Fin Configuraciones Personalizadas%
+
+%Inicia Documento
+\begin{document}
+
+%Indica que se cree una pagina nueva%
+\newpage
+%Inicia Portada
+\begin{titlepage}
+	%Importar una pagina desde un archivo pdf%
+	%\includepdf[pages=1-2, scale=1, pagecommand={}]{fileName.pdf}%
+	%Remover identación%
+	\noindent
+	%%
+	\includegraphics[scale=0.05]{institutionLogo1.png}\hfill\includegraphics[scale=0.05]{institutionLogo2.png}
+	\begin{center}
+	\vspace*{1.5cm}
+		\textbf{Nombre de la institución}
+	 	
+	 	\vspace{1cm}
+		Nombre de la escuela o departamento
+
+	 	\vspace{1.5cm}
+		\textbf{Nombre del autor} \cite{ref01}
+
+	 	\vspace{1.5cm}	 	
+		Titulo del documento
+	 	
+		\vfill
+		Fecha Completa
+	 \end{center}
+\end{titlepage}
+%Termina Portada
+
+\setlength{\unitlength}{1 cm}
+
+\newpage
+%Inicia Indice del documento
+\renewcommand\contentsname{Índice general}
+\tableofcontents 
+%Termina Indice del documento
+
+%Índice Tablas%
+\newpage
+\renewcommand\listtablename{Índice de tablas}
+\listoftables
+%Termina Índice Tablas%
+
+%Índice Figuras%
+\newpage
+\renewcommand\listfigurename{Índice de figuras}
+\listoffigures
+%Termina Índice Figuras%
+
+%Índice ecuaciones%
+\newpage
+\newcommand\listequationsname{Índice de ecuaciones}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+	\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+	\renewcommand{\cftequtitlefont}{\normalfont\Large\bfseries}
+\listofmyequations
+%Termina Índice ecuaciones%
+
+%Inicia Contenido%
+\newpage
+%El comando section agrega una seccion al documento%
+\section{Primera Sección}
+%El comando lipsum y el rango entre corchetes indica cuantos parrafos de texto incluira en la pagina%
+\lipsum[1-6]
+
+\newpage
+%El comando subsection agrega una sub-seccion al documento%
+\subsection{Primera Subsección}
+\lipsum[1-5]
+
+\newpage
+%El comando subsubsection agrega una sub-seccion a una subsección del documento%
+\subsubsection{Primera Sub-Subsección}
+\lipsum[1-4]
+
+%Ejemplo de Figura%
+\newpage
+\section{Ejemplo de Figura}
+A continuación se muestran algunos ejemplos de Imagenes que son incluidas como Figuras.\\
+%Figura 1%
+%El comando figure indica que se incluira un elemento grafico%
+%El caracter ! indica que se anularan los parametros internos de LaTex para determinar la posicion del grafico%
+%El caracter h indica posicionar en este mismo punto del documento%
+%El caracter t indica posicionar en lo más alto de la pagina que se pueda%
+%El caracter b indica posicionar en lo más bajo de la pagina que se pueda%
+\\ \lipsum[1-3]
+\begin{figure}[!htb]
+  %Indica que debe centrarse el grafico%
+  \centering
+  %El comando includegraphics Indica cual es el nombre del grafico que se va a importar%
+  %El parametro scale indica la dimension aproximada del grafico que se desea mostrar en la pagina%
+  %Si el tamaño de los graficos excede el espacio disponible seran enviados al final del documento%
+  \includegraphics[scale=0.05]{institutionLogo1.png}
+  %El titulo que mostrara en la pagina esta figura%
+  \caption{Ejemplo de Figura 1.}
+\end{figure}
+
+\newpage
+%Figura 2%
+\lipsum[1-3]
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[scale=0.05]{institutionLogo2.png}
+  \caption{Ejemplo de Figura 2.}
+\end{figure}
+
+%Ejemplo de Tabla%
+\newpage
+\section{Ejemplo de Tabla}
+\lipsum[1-2]
+%Indica que se agregara un elemento como Figura posicionando en esta pagina tomando en cuenta el espacio superior e inferior%
+\begin{figure}[!htb]
+	%Indica que la figura se va a centrar%
+	\centering
+	%Indica el titulo que se mostrara en el documento donde se colocara la tabla%
+	\captionof{table}{\textit{Ejemplo de Tabla.}}
+	%Espacio de separacion entre filas%
+	\def\arraystretch{1.2}
+	%Indica la creacion de la tabla y se crean las columnas de la tabla con una dimension especifica cada P es una columna%
+	\begin{tabular}{P{1.5cm} P{1.5cm} P{2cm} P{1.5cm}}
+		%Dibuja una linea horizontal abarcando el espacio disponible manteniendo el centrado%		
+		\hline \centering
+			 %Texto superior de la tabla cada & es una separacion como si se tratara de cada columna%
+			 %textbf resalta el texto en negritas%
+			 %Los caracteres \\ indican que finalice la linea y se inicie una linea nueva%
+			 \textbf{Columna1 } & \textbf{Columna2 } & \textbf{Columna3} & \textbf{Columna4}\\ \hline%Columnas%
+			%El texto a continuacion es separado por & que indica donde finaliza el texto de cada columna%
+			%Esta fila deja espacio vacio al final y dibuja una linea horizontal%
+			Texto &  Texto & & \\ \hline %Fila%
+			%El texto entre simbolos de dolar indica el modo matematico%
+			%Cuando se usa el caracter \ como prefijo de otro caracter se indica que debe ignorarse el comportamiento de ese caracter%
+			%En el texto al escribir \% se ignora el comportamiento del caracter % para que pueda ser interpretado como un simbolo de texto%				
+			Texto1 &  Texto2 & 0.039$<$=10\% & Verdadero\\ 
+			Texto1 &  Texto2 & 0.157$>$10\% & Falso\\ 
+			Texto1 &  Texto2 & 0.052$<$=10\% & Verdadero\\ \hline %Fila%				
+			Texto1 &  Texto2 & $>$10\% & Falso\\ 
+			Texto1 &  Texto2 & $>$10\% & Falso\\ 
+			Texto1 &  Texto2 & $>$10\% & Falso\\ \hline %Fila%				
+			Texto1 &  Texto2 & 0.042$<$=10\% & Verdadero\\ 
+			Texto1 &  Texto2 & 0.164$>$10\% & Falso\\ 
+			Texto1 &  Texto2 & 0.083$<$=10\% & Verdadero\\ \hline %Fila%				
+			Texto1 &  Texto2 & $>$10\% & Falso\\ 
+			Texto1 &  Texto2 & $>$10\% & Falso\\ 
+			Texto1 &  Texto2 & $>$10\% & Falso\\ \hline %Fila%
+	%Fin de la Tabla%
+	\end{tabular}
+%Fin de la Figura%
+\end{figure}
+
+%Ejemplo de Ecuaciones%
+\newpage
+\section{Ejemplo de ecuación}
+A continuación se indica un ejemplo de ecuación en el modo matemático.\\
+\\ \lipsum[1-2]
+
+%El comando center indica que lo que este envuelto en el va a centrarse%
+\begin{center}
+	%El comando equation indica que se interprete el siguiente texto como una ecuación%
+	%Al estar envuento por el comando se podra agregar a la lista de ecuaciones y sera interpretado en modo matematico%
+	%El prefijo _ indica que el texto inmediato siguiente servira de subtexto%
+	%El comando \sum es interpretado como el simbolo de sumatoria%
+	%El comando \frac es interpretado como una división de manera grafica como una pequeña tabla con 2 filas%
+	%El primer y segundo bloque de llaves {primero} {segundo} indica el contenido del numerador y denominador respectivamente%
+	\begin{equation}	
+		Simbolo_{nombre-formula} (Conjunto_1, Conjunto_2) = \sum_{i}\frac{(Conjunto_1(i)-Conjunto_2(i))^2}{Conjunto_1(i)+Conjunto_2(i)}	
+	\end{equation}
+%El comando definido myequations le brinda un nombre a la ecuacion anterior%
+\myequations{Ejemplo de una Ecuación Sumatoria.}
+\end{center}
+%Fin Contenido%
+
+\newpage
+%Inicia Referencias
+%Indicar el tipo de estilo para las referencias%
+\bibliographystyle{unsrt}
+%Indicar el documento que contiene la informacion de las referencias%
+\bibliography{referencias}
+%Termina Referencias
+\end{document}
+%Fin Documento
