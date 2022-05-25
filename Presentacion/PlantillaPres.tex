@@ -1,0 +1,112 @@
+%Plantilla Presentación Latex%
+
+%Inicia Estructura General de la Presentacion%
+%La clase Beamer permite crear presentaciones en LaTex%
+\documentclass[11pt]{beamer}
+%El comando usetheme aplica un tema a la estructura global de la presentacion puede cambiarse por otro ver: https://es.overleaf.com/learn/latex/Beamer%
+%Al no indicarse un colortheme se usa uno por defecto o default%
+\usetheme{Boadilla}
+%Se indica la codificacion de carateres preferida%
+\usepackage[utf8]{inputenc}
+%Facilitar la colocacion de elementos en una posicion fija%
+\usepackage{textpos}
+%Extension de los graficos en el filtro%
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+%Carpeta donde van a guardarse las imagenes o archivos externos como pdfs%
+\graphicspath{ {./imgs1/} , {./imgs2/} , {./pdfs/}}
+%Dar por defecto el nombre Figura a los graficos que se agregan al documento%
+\usepackage[figurename=Figura]{caption}
+%Dar por defecto el nombre Tabla a las tablas que se agregan al documento%
+\usepackage[tablename=Tabla]{caption}
+%Termina Estructura General de la Presentacion%
+
+%Inicia Datos Presentacion%
+\title{El titulo de su presentación}
+\subtitle{El subtitulo de su presentación}
+\author{El autor de la presentación}
+\institute{Nombre de la institución si aplica}
+\date{Fecha de elaboración si aplica}
+%Termina Datos Presentacion%
+
+%Inicia Presentacion%
+\begin{document}
+
+%Inicia Lamina titulo%
+%El comando frame indica que se agregue una nueva lamina a la presentacion%
+\begin{frame}
+%El comando titlepage genera los datos para la primera lamina con la info de Datos Presentacion%
+\titlepage
+\end{frame}
+%Fin Lamina titulo%
+
+%Índice%
+\begin{frame}
+%El comando frametitle le permite dar un titulo a la nueva lamina%
+\frametitle{Contenido}
+%El comando renewcommand contentsname renombra el Indice de contenido a: Indice%
+\renewcommand\contentsname{Índice}
+%El comando tableofcontents crea un Indice con los titulos de cada sección y sus derivados en la presentación%
+\tableofcontents 
+\end{frame}
+%Termina Indice%
+
+%Inicia Contenido de la Presentacion%
+\section{Primera Lamina}
+\begin{frame}
+\frametitle{Primera Lamina de Titulo}
+%El comando itemize permite incluir los siguientes elementos como una lista%
+\begin{itemize}
+	%El comando item indica un nuevo elemento a la lista%	 
+	\item  Primer elemento de la lista.
+	\item  Segundo elemento de la lista.
+	\item  Tercer elemento de la lista.
+	\item  Cuarto elemento de la lista:
+		%Si se usa el comando itemize dentro de un comando item se obtiene una sublista%
+		\begin{itemize}
+			\item	Primer elemento de la sublista
+			\item	Segundo elemento de la sublista
+			\item	Tercer elemento de la sublista
+		\end{itemize}		 
+\end{itemize}	 	
+\end{frame}
+
+%Imagen en lamina%
+\section{Seguna Lamina}
+\begin{frame}
+\frametitle{Segunda Lamina Incluye Imagen}
+Texto descriptivo u otros detalles.\\
+	\begin{figure}[!htb]
+		%Indica que la imagen debe ir centrada%
+		\begin{center}
+			\includegraphics[scale=0.05]{testImage.png}
+		\end{center}
+		 \caption{Ejemplo de Imagen en Lamina.}								
+	\end{figure}
+\end{frame}
+%Fin Imagen en lamina%
+
+%Incluir referencias personalizadas al final%
+\section{Tercer Lamina}
+\begin{frame}
+\frametitle{Tercera Lamina Referencias}
+\begin{itemize}
+	\item Referencias Beamer:
+		\begin{itemize}
+			%El comando href inserta un vinculo a un contenido en la red de internet%
+			%El comando beamergotobutton oculta la liga anterior y muestra el texto entre llaves como un boton para consultar la liga%			
+			\item \href{https://es.overleaf.com/learn/latex/Beamer}{\beamergotobutton{Referencia de Beamer 1.}}
+			%Notar el uso del caracter \ para incluir el caracter # como texto en la url o liga%			
+			\item \href{https://es.overleaf.com/learn/latex/Beamer\#Themes_and_colorthemes}{\beamergotobutton{Referencia de Beamer 2.}}
+		\end{itemize}
+\end{itemize}
+\end{frame}
+%Fin referencias personalizadas al final%
+
+%A partir de aqui lo que resta es reutilización de los pasos previos o bien otros comandos segun sus necesidades%
+%.%
+%..%
+%...%
+%Finaliza Contenido de la Presentacion%
+
+\end{document}
+%Termina Presentacion%
